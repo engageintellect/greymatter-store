@@ -68,9 +68,11 @@
         </div>
       </div>
 
-      <div class="mb-6 p-6 bg-neutral-100 rounded">
-        <h2 class="mb-5 uppercase text-lg">Payment Information</h2>
+
+
+      <div class="" id="errors">
       </div>
+
     </div>
   </div>
 
@@ -79,14 +81,16 @@
     <h2 class="uppercase text-lg mb-5">Summary</h2>
 
     <div class="mb-6 flex justify-between">
-      <span class="font-semibold">Total</span>
+      <span class="font-bold">Total</span>
       <span class="">${{ cart.get_total_cost }}</span>
     </div>
+
+    <hr>
 
     <button
       onclick="buy(event)"
       href="#"
-      class="inline-block px-8 py-4 rounded bg-emerald-400 hover:bg-emerald-500 font-semibold uppercase text-white"
+      class="inline-block my-5 px-8 py-4 rounded bg-emerald-400 hover:bg-emerald-500 font-semibold uppercase text-white"
     >
       Confirm Checkout
     </button>
@@ -98,34 +102,50 @@
 <script type="application/javascript" src="https://js.stripe.com/v3/" ></script>
 <script>
   function validateForm(data){
+    let el = document.querySelector('#errors');
+
     let errors = [];
 
     if (data.first_name == ""){
-      errors.push("First name is required");
+      errors.push("First name is empy");
     }
 
     if (data.last_name == ""){
-      errors.push("Last name is required");
+      errors.push("Last name is empty");
     }
 
     if (data.email == ""){
-      errors.push("Email is required");
+      errors.push("Email is empty");
     }
 
     if (data.phone == ""){
-      errors.push("Phone is required");
+      errors.push("Phone is empty");
     }
 
     if (data.address == ""){
-      errors.push("Address is required");
+      errors.push("Address is empty");
     }
 
     if (data.postal_code == ""){
-      errors.push("Postal code is required");
+      errors.push("Postal code is empty");
     }
 
     if (data.place == ""){
-      errors.push("Place is required");
+      errors.push("Place is empty");
+    }
+
+    if (errors.length > 0){
+      let html = '<ul class="flex flex-col gap-2">';
+
+      errors.forEach((error) => {
+        html += '<li class="text-red-700 text-sm font-semibold bg-red-200 rounded shadow p-2">' + error + '</li>'
+      })
+
+      el.innerHTML = html + '</ul>';
+
+
+    } else {
+      el.innerHTML = '';
     }
 
     return errors;
