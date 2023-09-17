@@ -21,12 +21,11 @@ def success(request):
 
 def update_cart(request, product_id, action):
 	cart = Cart(request)
-
 	if action == 'increment':
 		cart.add(product_id, 1, True)
 	else:
 		cart.add(product_id, -1, True)
-	
+
 	product = Product.objects.get(pk=product_id)
 	quantity = cart.get_item(product_id)
 
@@ -39,6 +38,7 @@ def update_cart(request, product_id, action):
 				'image': product.image,
 				'get_thumbnail': product.get_thumbnail(),
 				'price': product.price,
+				'slug': product.slug,
 			},
 			'total_price': (product.price * quantity) / 100,
 			'quantity': quantity,

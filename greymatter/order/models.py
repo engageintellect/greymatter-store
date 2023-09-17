@@ -36,8 +36,6 @@ class Order(models.Model):
 	def get_total_price(self):
 		if self.paid_amount:
 			return f'{self.paid_amount / 100:.2f}'
-
-
 		return 0
 
 	stripe_token = models.CharField(max_length=255)

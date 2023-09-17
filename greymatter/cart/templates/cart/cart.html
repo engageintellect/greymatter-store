@@ -7,7 +7,7 @@
 	<h1 class="mb-5 text-2xl">Shopping Cart</h1>
 
 	{% if cart %}
-		<div class="products w-full lg:w-3/3 border border-neutral-200 rounded shadow p-6 w-full">
+		<div class="products w-full lg:w-3/3 w-full">
 			{% for item in cart %}
 				{% include 'cart/partials/cart_item.html' %}
 			{% endfor %}

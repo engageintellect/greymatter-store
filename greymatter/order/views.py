@@ -53,6 +53,7 @@ def start_order(request):
 		phone=data['phone'],
 		# payment_intent=payment_intent,
 		paid_amount=total_price,
+		is_paid=True,
 		# paid=True
 	)	
 
