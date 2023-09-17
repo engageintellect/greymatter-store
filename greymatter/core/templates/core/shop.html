@@ -13,11 +13,11 @@
         <input
           type="text"
           name="query"
-          class="p-4 bg-neutral-100 border-0 active:outline-none focus:outline-none w-full max-w-sm"
+          class="p-4 bg-gray-100 border-0 active:outline-none focus:outline-none w-full max-w-sm"
           placeholder="Search..."
         />
 
-        <button class="p-4 bg-neutral-100 border-0">
+        <button class="p-4 bg-gray-100 border-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -41,7 +41,7 @@
       <li>
         <a
           href="{% url 'shop' %}"
-          class="{% if not active_category %}text-purple-700{% else %}text-neutral-500{% endif %}"
+          class="{% if not active_category %}text-purple-700{% else %}text-gray-500{% endif %}"
           >All Categories</a
         >
       </li>
@@ -50,7 +50,7 @@
       <li>
         <a
           href="{% url 'shop' %}?category={{ category.slug }}"
-          class="{% if category.slug == active_category %}text-purple-700{% else %}text-neutral-500{% endif %}"
+          class="{% if category.slug == active_category %}text-purple-700{% else %}text-gray-500{% endif %}"
           >{{ category.name }}</a
         >
       </li>

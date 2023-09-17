@@ -3,7 +3,6 @@ import stripe
 
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
 
 from cart.cart import Cart
 from .models import Order, OrderItem
@@ -17,11 +16,9 @@ def start_order(request):
 
 	for item in cart:
 		product = item['product']
-		print('product', product.price)
 		total_price += product.price * int(item['quantity'])
-		print('total', total_price)
 
-		obj = {
+		items.append({
 			'price_data': {
 				'currency': 'usd',
 				'product_data': {
@@ -30,9 +27,7 @@ def start_order(request):
 				'unit_amount': product.price,
 			},
 			'quantity': int(item['quantity']),
-		}
-
-		items.append(obj)
+		})
 
 
 	stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
@@ -46,19 +41,20 @@ def start_order(request):
 
 	payment_intent = session.payment_intent
 
-	first_name = data['first_name']
-	last_name = data['last_name']
-	email = data['email']
-	address = data['address']
-	postal_code = data['postal_code']
-	place = data['place']
-	phone = data['phone']
 	
-	order = Order.objects.create(user=request.user, first_name=first_name, last_name=last_name, email=email, address=address, postal_code=postal_code, place=place, phone=phone)	
-	order.payment_intent = payment_intent
-	order.paid_amount = total_price
-	order.paid = True
-	order.save()
+	order = Order.objects.create(
+		user=request.user, 
+		first_name=data['first_name'],
+		last_name=data['last_name'], 
+		email=data['email'], 
+		address=data['address'], 
+		postal_code=data['postal_code'], 
+		place=data['place'], 
+		phone=data['phone'],
+		# payment_intent=payment_intent,
+		paid_amount=total_price,
+		# paid=True
+	)	
 
 
 	for item in cart:

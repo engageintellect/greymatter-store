@@ -3,39 +3,38 @@
 {% block title %}Edit Account{% endblock %}
 {% block content %}
 
+<div class="max-w-2xl mx-auto flex flex-wrap p-6">
+  <div class="w-full bg-gray-100 p-5 rounded shadow">
+		<h1 class="mb-5 text-3xl">Edit Account</h1>
+		
+		<form method="post" action="." class="space-y-3 flex flex-col">
+			{% csrf_token %}
+			<div>
+				<label for="">First Name</label>
+				<input type="text" name="first_name" class="w-full mt-2 p-2 rounded" value="{{ request.user.first_name }}">
+			</div>
 
-<div class="max-w-xl mx-auto p-6">
-	<h1 class="mb-5 text-3xl">Edit Account</h1>
+			<div>
+				<label for="">Last Name</label>
+				<input type="text" name="last_name" class="w-full mt-2 p-2 rounded" value="{{ request.user.last_name }}">
+			</div>
 
-	<form method="post" action="." class="space-y-3 flex flex-col">
-		{% csrf_token %}
-		<div>
-			<label for="">First Name</label>
-			<input type="text" name="first_name" class="w-full mt-2 p-2 bg-neutral-100 rounded" value="{{ request.user.first_name }}">
-		</div>
+			<div>
+				<label for="">Username</label>
+				<input type="text" name="username" class="w-full mt-2 p-2 rounded" value="{{ request.user.username }}">
+			</div>
 
-		<div>
-			<label for="">Last Name</label>
-			<input type="text" name="last_name" class="w-full mt-2 p-2 bg-neutral-100 rounded" value="{{ request.user.last_name }}">
-		</div>
+			<div>
+				<label for="">E-mail</label>
+				<input type="email" name="email" class="w-full mt-2 p-2 rounded" value="{{ request.user.email }}">
+			</div>
 
-		<div>
-			<label for="">Username</label>
-			<input type="text" name="username" class="w-full mt-2 p-2 bg-neutral-100 rounded" value="{{ request.user.username }}">
-		</div>
+			<div>
+				<button class="py-4 px-6 rounded text-white bg-purple-500 hover:bg-purple-600 font-semibold uppercase w-full">Save Changes</button>
+			</div>
 
-		<div>
-			<label for="">E-mail</label>
-			<input type="email" name="email" class="w-full mt-2 p-2 bg-neutral-100 rounded" value="{{ request.user.email }}">
-		</div>
-
-		<div>
-			<button class="py-4 px-6 rounded text-white bg-purple-500 hover:bg-purple-600 font-semibold uppercase w-full">Save Changes</button>
-		</div>
-
-	</form>
-
-
+		</form>
+	</div>
 </div>
 
 {% endblock %}

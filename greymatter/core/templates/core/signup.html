@@ -2,7 +2,7 @@
 {% block title %}Signup{% endblock %}
 {% block content %}
 <div class="max-w-lg mx-auto flex flex-wrap p-6">
-  <div class="w-full bg-neutral-100 p-5 rounded shadow-lg">
+  <div class="w-full bg-gray-100 p-5 rounded shadow-lg">
     <h1 class="mb-6 text-2xl">Sign up</h1>
 
     <form method="post" action="." class="space-y-3">
@@ -13,7 +13,7 @@
         <input
           type="text"
           name="username"
-          class="w-full mt-2 p-2 bg-white rounded"
+          class="w-full mt-2 p-2 bg-white rounded focus:border-none focus:outline focus:outline-1 focus:outline-gray-500"
         />
       </div>
 
@@ -22,7 +22,7 @@
         <input
           type="text"
           name="first_name"
-          class="w-full mt-2 p-2 bg-white rounded"
+          class="w-full mt-2 p-2 bg-white rounded focus:border-none focus:outline focus:outline-1 focus:outline-gray-500"
         />
       </div>
 
@@ -31,7 +31,7 @@
         <input
           type="text"
           name="last_name"
-          class="w-full mt-2 p-2 bg-white rounded"
+          class="w-full mt-2 p-2 bg-white rounded focus:border-none focus:outline focus:outline-1 focus:outline-gray-500"
         />
       </div>
 
@@ -40,7 +40,7 @@
         <input
           type="email"
           name="email"
-          class="w-full mt-2 p-2 bg-white rounded"
+          class="w-full mt-2 p-2 bg-white rounded focus:border-none focus:outline focus:outline-1 focus:outline-gray-500"
         />
       </div>
       <div>
@@ -48,7 +48,7 @@
         <input
           type="password"
           name="password1"
-          class="w-full mt-2 p-2 bg-white rounded"
+          class="w-full mt-2 p-2 bg-white rounded focus:border-none focus:outline focus:outline-1 focus:outline-gray-500"
         />
       </div>
 
@@ -57,7 +57,7 @@
         <input
           type="password"
           name="password2"
-          class="w-full mt-2 p-2 bg-white rounded"
+          class="w-full mt-2 p-2 bg-white rounded focus:border-none focus:outline focus:outline-1 focus:outline-gray-500"
         />
       </div>
 
@@ -85,7 +85,7 @@
         >
           Submit
         </button>
-        <p class="mt-2 text-neutral-700">Or <a href="{% url 'login' %}" class="mb-6"><span class="underline">login</span></a> if you already have an account.</p>
+        <p class="mt-2 text-gray-700">Or <a href="{% url 'login' %}" class="mb-6"><span class="underline">login</span></a> if you already have an account.</p>
       </div>
     </form>
   </div>

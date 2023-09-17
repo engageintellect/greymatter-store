@@ -12,19 +12,32 @@
   <div class="information w-full md:w-2/5 md:p-6">
     <h1 class="text-2xl">{{ product.name }}</h1>
 
-    <p class="mt-1 text-neutral-500"><span class="font-semibold">Price: </span>{{ product.get_display_price }}</p>
+    <p class="mt-1 text-gray-500"><span class="font-semibold">Price: </span>{{ product.get_display_price }}</p>
 
     {% if product.description %}
-    <p class="mt-6 text-neutral-700">{{ product.description }}</p>
+    <p class="mt-6 text-gray-700">{{ product.description }}</p>
     {% endif %}
 
     <a
       href="#"
-      class="w-full flex justify-center mt-6  px-8 py-4 rounded bg-purple-500 hover:bg-purple-600 font-semibold uppercase text-white"
+      class="w-full flex justify-center mt-6  px-8 py-4 rounded bg-purple-500 hover:bg-purple-600 font-semibold uppercase text-white group"
       hx-get="{% url 'add_to_cart' product.id %}"
       hx-target="#menu-cart-button"
       hx-swap="outerHTML"
-      >Add to cart</a
+      >
+
+      <div class="flex items-center justify-center gap-2">
+        <div class="md:group-hover:scale-[110%] transition-all duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+        </div>
+        <div>
+          Add to cart
+        </div>
+      </div>
+      
+    </a
     >
   </div>
 

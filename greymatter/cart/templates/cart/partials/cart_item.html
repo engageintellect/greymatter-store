@@ -7,14 +7,14 @@
 		<div class="w-3/4 pl-6">
 			<div class="flex justify-between">
 				<a href="/shop/{{ item.product.slug }}" class="text-lg">{{ item.product.name }}</a>
-				<span class="mb-6 pt-1 text-neutral-400">${{ item.total_price }}0</span>
+				<span class="mb-6 pt-1 text-gray-400">${{ item.total_price }}0</span>
 			</div>
 
 			<hr>
 
 			<div class="quantity mt-6 flex items-center space-x-4">
 				<a 
-					class="p-3 bg-neutral-100 hover:bg-neutral-200 transition-all duration-200 md:cursor-pointer"
+					class="p-3 bg-gray-100 hover:bg-gray-200 transition-all duration-200 md:cursor-pointer"
 					hx-get="{% url 'update_cart' item.product.id 'decrement' %}"
 					hx-target="#cart-item-{{ item.product.id }}"
 					hx-swap="outerHTML"
@@ -23,7 +23,7 @@
 				</a>
 				<span>{{ item.quantity }}</span>
 				<a 
-					class="p-3 bg-neutral-100 hover:bg-neutral-200 transition-all duration-200 md:cursor-pointer"
+					class="p-3 bg-gray-100 hover:bg-gray-200 transition-all duration-200 md:cursor-pointer"
 					hx-get="{% url 'update_cart' item.product.id 'increment' %}"
 					hx-target="#cart-item-{{ item.product.id }}"
 					hx-swap="outerHTML"

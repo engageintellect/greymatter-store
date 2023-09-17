@@ -5,36 +5,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>{% block title %}{% endblock %} | GreyMatter</title>
+    <title>{% block title %}{% endblock %} | Grey Matter</title>
   </head>
 
-  <body>
-    <nav class="border-b border-neutral-300">
+  <body class="text-gray-700 tracking-tight">
+
+    <nav class="border-b border-gray-300 sticky top-0 bg-white -z-[-1]">
       <div
         class="max-w-6xl mx-auto py-2 px-6 xl:px-0 flex items-center justify-between"
       >
         <div class="menu-left flex items-center space-x-6">
-          <a href="{% url 'layout' %}" class="text-lg font-semibold text-neutral-500"
-            >GreyMatter</a
-          >
-
-          <ul class="flex items-center space-x-4">
+          <a href="{% url 'layout' %}" class="md:text-lg font-semibold text-gray-500">
+            <img class="w-8 h-8 object-cover rounded-full border border-[1.5px] border-gray-700" src="https://cvws.icloud-content.com/B/AWbO6OCBAYVBPt-PJIdZwCit4MRrAcKOYYFSIiiOjA4P12ILnuwk8VeF/Screen+Shot+2018-05-07+at+3.19.30+PM.png?o=AmvrtUhaamaO_VtOMF3v2r-P2o0C6XY1F-1QztVQo479&v=1&x=3&a=CAogKURS5aNfzG6jVVDWyjgKQFbx-f30jaDzABmQ0yK0TV4SbxCa9oewqjEYmtPjsaoxIgEAUgSt4MRrWgQk8VeFaicWwdL1PuaLu5-8kIU2-Qhi5f852bWrFzG8h-Q30Tx2yoliIHXunRdyJ4hNHwgSHOkkNTQTiI5rEwCwm7upZdfyXKDc51qzC-J62QQ4vAueDg&e=1695005862&fl=&r=3ceaae1d-e14f-47c9-8266-1d00e403e450-1&k=7a1EDX15FUjigyhatsaT8w&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=117&s=u9N_pWPfEviUaSmmmkveoL5pnr4&cd=i" alt="">
+            
+          </a>
+          <ul class="flex items-center gap-4">
             <li>
               <a
                 href="{% url 'shop' %}"
-                class="text-neutral-500 hover:text-neutral-800"
+                class="text-gray-500 hover:text-gray-800"
                 >Shop</a
               >
             </li>
             <li>
-              <a href="#" class="text-neutral-500 hover:text-neutral-800"
+              <a href="#" class="text-gray-500 hover:text-gray-800"
                 >About</a
               >
             </li>
 
             {% if user.is_authenticated %}
             <li>
-              <a href="{% url 'logout' %}" class="text-neutral-500 hover:text-neutral-800">Logout</a>
+              <a href="{% url 'logout' %}" class="text-gray-500 hover:text-gray-800">Logout</a>
             </li>
 
             {% endif %}
@@ -66,7 +67,7 @@
             hx-trigger="update-menu-cart from:body"
             hx-swap="innerHTML"
           >
-            {% include "cart/menu_cart.html" %}
+            {% include "cart/partials/menu_cart.html" %}
           </div>
 
 
@@ -75,11 +76,12 @@
     </nav>
 
     <main>{% block content %} {% endblock %}</main>
-    <footer class="bg-neutral-100">
+    <footer class="bg-gray-100">
       <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
         <div class="footer-left mb-12 md:mb-0">
+          <img class="object-cover w-16 h-16 rounded-full border border-[1.5px] border-gray-700 mb-2" src="https://cvws.icloud-content.com/B/AWbO6OCBAYVBPt-PJIdZwCit4MRrAcKOYYFSIiiOjA4P12ILnuwk8VeF/Screen+Shot+2018-05-07+at+3.19.30+PM.png?o=AmvrtUhaamaO_VtOMF3v2r-P2o0C6XY1F-1QztVQo479&v=1&x=3&a=CAogKURS5aNfzG6jVVDWyjgKQFbx-f30jaDzABmQ0yK0TV4SbxCa9oewqjEYmtPjsaoxIgEAUgSt4MRrWgQk8VeFaicWwdL1PuaLu5-8kIU2-Qhi5f852bWrFzG8h-Q30Tx2yoliIHXunRdyJ4hNHwgSHOkkNTQTiI5rEwCwm7upZdfyXKDc51qzC-J62QQ4vAueDg&e=1695005862&fl=&r=3ceaae1d-e14f-47c9-8266-1d00e403e450-1&k=7a1EDX15FUjigyhatsaT8w&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=117&s=u9N_pWPfEviUaSmmmkveoL5pnr4&cd=i" alt="">
           <h2 class="mb-5 uppercase text-lg">About Us</h2>
-          <p class="text-neutral-600">
+          <p class="text-gray-600">
             A simple, lightweight, and fast PHP framework.
           </p>
         </div>
@@ -88,17 +90,17 @@
           <h2 class="mb-5 uppercase text-lg">Social Links</h2>
           <ul class="space-y-2">
             <li>
-              <a href="#" class="text-neutral-500 hover:text-neutral-800"
+              <a href="#" class="text-gray-500 hover:text-gray-800"
                 >Facebook</a
               >
             </li>
             <li>
-              <a href="#" class="text-neutral-500 hover:text-neutral-800"
+              <a href="#" class="text-gray-500 hover:text-gray-800"
                 >Twitter</a
               >
             </li>
             <li>
-              <a href="#" class="text-neutral-500 hover:text-neutral-800"
+              <a href="#" class="text-gray-500 hover:text-gray-800"
                 >Instagram</a
               >
             </li>
