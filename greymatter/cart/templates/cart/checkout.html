@@ -1,99 +1,188 @@
 {% extends "core/layout.html" %} 
 {% block title %}Checkout{% endblock %} 
 {%block content %}
-<div class="max-w-6xl mx-auto flex justify-center items-start py-6 px-6 xl:px-0">
-
-  <form method="post" action="{% url 'start_order' %}" class="w-full flex flex-col gap-5 lg:flex-row">
-    {% csrf_token %}
-
-    <div class=" w-full">
-      <h1 class="mb-5 text-3xl">Checkout</h1>
+<div class="max-w-6xl mx-auto flex flex-col lg:flex-row justify-center items-start py-6 px-6 xl:px-0">
 
 
-      <div class="w-full">
-        <div class="mb-6 p-6 bg-neutral-100 rounded">
-          <h2 class="mb-5 uppercase text-lg">Shipping Information</h2>
+  <div class=" w-full">
+    <h1 class="mb-5 text-3xl">Checkout</h1>
 
-          <div class="flex space-x-6">
-            <div class="w-1/2 mb-4">
-              <label class="inline-block mb-2">First Name</label>
-              <input
-                type="text"
-                name="first_name"
-                class="w-full p-2 rounded"
-                value="{{ request.user.first_name }}"
-              />
-            </div>
 
-            <div class="w-1/2 mb-4">
-              <label class="inline-block mb-2">Last Name</label>
-              <input
-                type="text"
-                name="last_name"
-                class="w-full p-2 rounded"
-                value="{{ request.user.last_name }}"
-              />
-            </div>
-          </div>
+    <div class="w-full">
+      <div class="mb-6 p-6 bg-neutral-100 rounded">
+        <h2 class="mb-5 uppercase text-lg">Shipping Information</h2>
 
-          <div class="mb-4">
-            <label class="inline-block mb-2">Address</label>
-            <input type="text" name="address" class="w-full p-2 rounded" />
-          </div>
-
-          <div class="flex space-x-6">
-            <div class="w-1/2 mb-4">
-              <label class="inline-block mb-2">Zip Code</label>
-              <input type="text" name="postal_code" class="w-full p-2 rounded" />
-            </div>
-
-            <div class="w-1/2 mb-4">
-              <label class="inline-block mb-2">City</label>
-              <input type="text" name="place" class="w-full p-2 rounded" />
-            </div>
-          </div>
-        </div>
-        <div class="mb-6 p-6 bg-neutral-100 rounded">
-          <h2 class="mb-5 uppercase text-lg">Contact Information</h2>
-
-          <div class="mb-4">
-            <label class="inline-block mb-2">Email</label>
+        <div class="flex space-x-6">
+          <div class="w-1/2 mb-4">
+            <label class="inline-block mb-2">First Name</label>
             <input
-              type="email"
-              name="email"
+              type="text"
+              name="first_name"
               class="w-full p-2 rounded"
-              value="{{ request.user.email }}"
+              value="{{ request.user.first_name }}"
             />
           </div>
 
-          <div class="mb-4">
-            <label class="inline-block mb-2">Phone Number</label>
-            <input type="phone" name="phone" class="w-full p-2 rounded" />
+          <div class="w-1/2 mb-4">
+            <label class="inline-block mb-2">Last Name</label>
+            <input
+              type="text"
+              name="last_name"
+              class="w-full p-2 rounded"
+              value="{{ request.user.last_name }}"
+            />
           </div>
         </div>
 
-        <div class="mb-6 p-6 bg-neutral-100 rounded">
-          <h2 class="mb-5 uppercase text-lg">Payment Information</h2>
+        <div class="mb-4">
+          <label class="inline-block mb-2">Address</label>
+          <input type="text" name="address" class="w-full p-2 rounded" />
+        </div>
+
+        <div class="flex space-x-6">
+          <div class="w-1/2 mb-4">
+            <label class="inline-block mb-2">Zip Code</label>
+            <input type="text" name="postal_code" class="w-full p-2 rounded" />
+          </div>
+
+          <div class="w-1/2 mb-4">
+            <label class="inline-block mb-2">City</label>
+            <input type="text" name="place" class="w-full p-2 rounded" />
+          </div>
         </div>
       </div>
-    </div>
+      <div class="mb-6 p-6 bg-neutral-100 rounded">
+        <h2 class="mb-5 uppercase text-lg">Contact Information</h2>
 
+        <div class="mb-4">
+          <label class="inline-block mb-2">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="w-full p-2 rounded"
+            value="{{ request.user.email }}"
+          />
+        </div>
 
-    <div class="summary w-full flex flex-col lg:w-1/3 rounded justify-start">
-      <h2 class="uppercase text-lg mb-5">Summary</h2>
-
-      <div class="mb-6 flex justify-between">
-        <span class="font-semibold">Total</span>
-        <span class="">${{ cart.get_total_cost }}</span>
+        <div class="mb-4">
+          <label class="inline-block mb-2">Phone Number</label>
+          <input type="phone" name="phone" class="w-full p-2 rounded" />
+        </div>
       </div>
 
-      <button
-        href="#"
-        class="inline-block px-8 py-4 rounded bg-emerald-400 hover:bg-emerald-500 font-semibold uppercase text-white"
-      >
-        Confirm Checkout
-      </button>
+      <div class="mb-6 p-6 bg-neutral-100 rounded">
+        <h2 class="mb-5 uppercase text-lg">Payment Information</h2>
+      </div>
     </div>
-  </form>
+  </div>
+
+
+  <div class="summary w-full flex flex-col lg:w-1/3 rounded justify-start">
+    <h2 class="uppercase text-lg mb-5">Summary</h2>
+
+    <div class="mb-6 flex justify-between">
+      <span class="font-semibold">Total</span>
+      <span class="">${{ cart.get_total_cost }}</span>
+    </div>
+
+    <button
+      onclick="buy(event)"
+      href="#"
+      class="inline-block px-8 py-4 rounded bg-emerald-400 hover:bg-emerald-500 font-semibold uppercase text-white"
+    >
+      Confirm Checkout
+    </button>
+  </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script type="application/javascript" src="https://js.stripe.com/v3/" ></script>
+<script>
+  function validateForm(data){
+    let errors = [];
+
+    if (data.first_name == ""){
+      errors.push("First name is required");
+    }
+
+    if (data.last_name == ""){
+      errors.push("Last name is required");
+    }
+
+    if (data.email == ""){
+      errors.push("Email is required");
+    }
+
+    if (data.phone == ""){
+      errors.push("Phone is required");
+    }
+
+    if (data.address == ""){
+      errors.push("Address is required");
+    }
+
+    if (data.postal_code == ""){
+      errors.push("Postal code is required");
+    }
+
+    if (data.place == ""){
+      errors.push("Place is required");
+    }
+
+    return errors;
+
+  }
+
+  function buy(event){
+    event.preventDefault();
+
+    let data = {
+      'first_name': document.querySelector('input[name="first_name"]').value,
+      'last_name': document.querySelector('input[name="last_name"]').value,
+      'email': document.querySelector('input[name="email"]').value,
+      'phone': document.querySelector('input[name="phone"]').value,
+      'address': document.querySelector('input[name="address"]').value,
+      'postal_code': document.querySelector('input[name="postal_code"]').value,
+      'place': document.querySelector('input[name="place"]').value,
+
+    }
+
+    let errors = validateForm(data);
+    if (errors.length){
+      console.log(errors)
+    } else {
+      var stripe = Stripe('{{ pub_key }}')
+
+      fetch ('/order/start_order/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify(data)
+      })
+      .then(function(response){
+        return response.json()
+      })
+      .then(function(session){
+        return stripe.redirectToCheckout({ sessionId: session.session.id })
+      })
+      .then(function(result){
+        if (result.error){
+          alert(result.error.message)
+        }
+      })
+      .catch(function(error){
+        console.log('Errors', error)
+      })
+
+    }
+    return false
+
+  }
+</script>
+
+{% endblock %}
+
