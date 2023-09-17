@@ -30,6 +30,15 @@ class Order(models.Model):
 	paid_amount = models.IntegerField(default=0)
 	status = models.CharField(max_length=50, choices=STATUS_CHOICES, default=ORDERED)
 
+	class Meta:
+		ordering = ['-created_at',]
+	
+	def get_total_price(self):
+		if self.paid_amount:
+			return self.paid_amount / 100
+
+		return 0
+
 	stripe_token = models.CharField(max_length=255)
 	stripe_charge_id = models.CharField(max_length=255)
 
@@ -38,4 +47,7 @@ class OrderItem(models.Model):
 	product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
 	price = models.IntegerField()
 	quantity = models.IntegerField(default=1)
+
+	def get_total_price(self):
+		return (self.price) / 100
 

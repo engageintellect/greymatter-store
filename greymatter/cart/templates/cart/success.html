@@ -1,0 +1,38 @@
+{% extends "core/layout.html" %} 
+{% block title %}Success{% endblock %} 
+{%block content %}
+<div class="bg-emerald-500">
+
+	<div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-5 justify-center items-start py-6 px-6 xl:px-0">
+		<div class="min-h-screen flex flex-col justify-start items-center w-full text-white py-40">
+			<div class="text-5xl md:text-7xl font-bold uppercase">
+				Success!
+			</div>
+
+			<div class="text-lg md:text-xl my-5">
+				Thank you! Your order has been placed.
+			</div>
+
+
+			<div class="flex gap-5">
+				<button class="bg-white py-2 px-4 rounded text-emerald-500 font-semibold uppercase">
+					<a href="/">
+						Home
+					</a>
+				</button>
+				<button class="bg-white py-2 px-4 rounded text-emerald-500 font-semibold uppercase">
+
+					<a href="{% url 'shop' %}">
+						Store
+					</a>
+
+
+				</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
