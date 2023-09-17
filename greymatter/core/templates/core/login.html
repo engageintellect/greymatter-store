@@ -2,21 +2,22 @@
 {% block title %}Login{% endblock %}
 {% block content %}
 <div class="max-w-lg mx-auto flex flex-wrap p-6">
-  <div class="w-full bg-neutral-100 p-5 rounded">
+  <div class="w-full bg-neutral-100 p-5 rounded shadow-lg">
     <h1 class="mb-6 text-2xl">Login</h1>
+
 
     <form method="post" action="." class="space-y-3">
       {% csrf_token %}
       <div>
         <label for="">Username</label>
-        <input type="text" name="username" class="w-full mt-2 py-4 px-6 bg-white rounded" />
+        <input type="text" name="username" class="w-full mt-2 p-2 bg-white rounded" />
       </div>
       <div>
         <label for="">Password</label>
         <input
           type="password"
           name="password"
-          class="w-full mt-2 py-4 px-6 bg-white rounded"
+          class="w-full mt-2 p-2 bg-white rounded"
         />
       </div>
 
@@ -38,12 +39,13 @@
       {% endif %}
 
 
-      <div>
+      <div class="flex flex-col items-center">
         <button
-          class="py-4 px-6 rounded text-white bg-purple-500 hover:bg-purple-700"
+          class="w-full py-4 px-6 rounded text-white bg-purple-500 hover:bg-purple-600 font-semibold uppercase"
         >
           Submit
         </button>
+        <p class="text-neutral-700 mt-2">Or <a href="{% url 'signup' %}" class="mb-6"><span class="underline">sign up</span></a> to create a new account.</p>
       </div>
     </form>
   </div>
