@@ -35,7 +35,8 @@ class Order(models.Model):
 	
 	def get_total_price(self):
 		if self.paid_amount:
-			return self.paid_amount / 100
+			return f'{self.paid_amount / 100:.2f}'
+
 
 		return 0
 
@@ -49,5 +50,5 @@ class OrderItem(models.Model):
 	quantity = models.IntegerField(default=1)
 
 	def get_total_price(self):
-		return (self.price) / 100
+		return f'{(self.price) / 100:.2f}'
 

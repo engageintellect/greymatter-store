@@ -84,9 +84,19 @@
     <button
       onclick="buy(event)"
       href="#"
-      class="inline-block my-5 px-8 py-4 rounded bg-emerald-400 hover:bg-emerald-500 font-semibold uppercase text-white"
+      class="inline-block justify-center my-5 px-8 py-4 rounded bg-emerald-400 hover:bg-emerald-500 font-semibold uppercase text-white group"
     >
-      Confirm Checkout
+      <div class="flex justify-center items-center gap-2">
+				<div class="md:group-hover:scale-[110%] transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        </div>
+
+        <div>
+          Complete Order
+        </div>
+      </div>
     </button>
 
       <div class="" id="errors">

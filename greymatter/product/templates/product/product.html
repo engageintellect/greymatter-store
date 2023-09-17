@@ -12,7 +12,7 @@
   <div class="information w-full md:w-2/5 md:p-6">
     <h1 class="text-2xl">{{ product.name }}</h1>
 
-    <p class="mt-1 text-neutral-400">{{ product.get_display_price }}</p>
+    <p class="mt-1 text-neutral-500"><span class="font-semibold">Price: </span>{{ product.get_display_price }}</p>
 
     {% if product.description %}
     <p class="mt-6 text-neutral-700">{{ product.description }}</p>
