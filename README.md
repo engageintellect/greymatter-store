@@ -7,6 +7,8 @@ This is a simple key-value store that uses a file as a backing store. It is writ
 * Python
 * HTMX
 * Django
+* Stripe
+* SQLite
 * TailwindCSS
 
 ## Getting Started:
