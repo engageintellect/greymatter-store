@@ -1,0 +1,67 @@
+
+{% extends "core/layout.html" %} 
+{% block title %}Shop{% endblock %}
+{% block content %}
+
+
+<div class="max-w-6xl mx-auto min-h-screen flex flex-wrap items-start py-6 px-6 xl:px-0">
+  <div class="filters w-full lg:w-1/4">
+    <h3 class="mb-3 text-xl uppercase">Search</h3>
+
+    <form method="get" action=".">
+      <div class="flex pr-4">
+        <input
+          type="text"
+          name="query"
+          class="p-4 bg-neutral-100 border-0 active:outline-none focus:outline-none w-full max-w-sm"
+          placeholder="Search..."
+        />
+
+        <button class="p-4 bg-neutral-100 border-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
+      </div>
+    </form>
+    <h3 class="mb-3 mt-6 text-xl uppercase">Categories</h3>
+
+    <ul class="space-y-2">
+      <li>
+        <a
+          href="{% url 'shop' %}"
+          class="{% if not active_category %}text-purple-700{% else %}text-neutral-500{% endif %}"
+          >All Categories</a
+        >
+      </li>
+
+      {% for category in categories %}
+      <li>
+        <a
+          href="{% url 'shop' %}?category={{ category.slug }}"
+          class="{% if category.slug == active_category %}text-purple-700{% else %}text-neutral-500{% endif %}"
+          >{{ category.name }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="products w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center flex-wrap">
+    {% for product in products %} 
+      {% include 'product/partials/product_list_item.html' %} 
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

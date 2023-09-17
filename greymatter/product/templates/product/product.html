@@ -1,0 +1,32 @@
+{% extends "core/layout.html" %} 
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+<div class="max-w-6xl mx-auto flex flex-wrap py-6 px-6 xl:px-0">
+  <div class="images w-full mb-6 lg:mb-0 lg:w-3/5">
+    <img 
+      src="{% if product.image %}{{ product.image.url }}{% else %}https://via.placeholder.com/240x240.jpg{% endif %}" 
+      class="rounded" 
+    />
+  </div>
+
+  <div class="information w-full lg:w-2/5 lg:p-6">
+    <h1 class="text-2xl">{{ product.name }}</h1>
+
+    <p class="mt-1 text-neutral-400">{{ product.get_display_price }}</p>
+
+    {% if product.description %}
+    <p class="mt-6 text-neutral-700">{{ product.description }}</p>
+    {% endif %}
+
+    <a
+      href="#"
+      class="mt-6 inline-block px-8 py-4 rounded bg-purple-500 hover:bg-purple-700 text-white"
+      hx-get="{% url 'add_to_cart' product.id %}"
+      hx-target="#menu-cart-button"
+      hx-swap="outerHTML"
+      >Add to cart</a
+    >
+  </div>
+
+  {% endblock %}
+</div>
