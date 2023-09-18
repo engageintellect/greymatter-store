@@ -1,5 +1,5 @@
 from django.urls import path
-from core.views import layout, shop, signup, myaccount, edit_myaccount, about
+from core.views import layout, store, signup, myaccount, edit_myaccount, about
 from django.contrib.auth import views
 from product.views import product
 
@@ -11,7 +11,7 @@ urlpatterns = [
 	path('login/', views.LoginView.as_view(template_name='core/login.html'), name='login'),
 	path('myaccount/', myaccount, name='myaccount'),
 	path('myaccount/edit/', edit_myaccount, name='edit_myaccount'),
-	path('shop/', shop, name='shop'),
+	path('store/', store, name='store'),
 	path('about/', about, name='about'),
-	path('shop/<slug:slug>/', product, name='product'),
+	path('store/<slug:slug>/', product, name='product'),
 ]
