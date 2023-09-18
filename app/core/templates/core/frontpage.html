@@ -43,7 +43,7 @@
           </svg>
         </div>
         <div>
-          Order Now
+          Start Shopping
         </div>
       </div>
     </a>
@@ -59,6 +59,16 @@
       {% include 'product/partials/product_list_item.html' %} 
     {% endfor %}
   </div>
+
+  <!-- <div class="sm:hidden products sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 items-center "> -->
+    <div class="example sm:hidden flex sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-auto gap-2">
+     {% for product in products %} 
+      {% include 'product/partials/product_scroll_item.html' %} 
+    {% endfor %}
+  </div>
+
+
+
 </div>
 
 <!-- <div>
