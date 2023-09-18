@@ -16,7 +16,7 @@
       >
         <div class="menu-left flex items-center space-x-6">
           <a href="{% url 'layout' %}" class="md:text-lg font-semibold text-gray-500">
-            <img class="w-8 h-8 object-cover rounded-full border border-[1.5px] border-gray-700" src="../media/uploads/gme-logo.png" alt="">
+            <img class="w-8 h-8 object-cover rounded-full border border-[1.25px] border-gray-500" src="../media/uploads/gme-logo.png" alt="">
             
           </a>
           <ul class="flex items-center gap-4">
@@ -63,6 +63,7 @@
             hx-get="{% url 'hx_menu_cart' %}"
             hx-trigger="update-menu-cart from:body"
             hx-swap="innerHTML"
+            class="relative"
           >
             {% include "cart/partials/menu_cart.html" %}
           </div>
@@ -74,7 +75,7 @@
     <footer class="bg-gray-100">
       <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
         <div class="footer-left mb-12 md:mb-0">
-          <img class="object-cover w-16 h-16 rounded-full border border-[1.5px] border-gray-700 mb-2" src="../media/uploads/gme-logo.png" alt="">
+          <img class="object-cover w-16 h-16 rounded-full border border-[1.25px] border-gray-500 mb-2" src="../media/uploads/gme-logo.png" alt="">
           <h2 class="mb-5 uppercase text-lg">
             <a href="#">About Us</a>
           </h2>
