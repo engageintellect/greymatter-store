@@ -1,18 +1,18 @@
 {% if item %}
 <div class="product group flex w-full border-b border-gray-200" id="cart-item-{{ item.product.id }}">
-	<div class="h-32 w-32 overflow-hidden max-h-32 max-w-32">
+	<div class="h-24 sm:h-32 w-24 sm:w-32 overflow-hidden max-h-32 max-w-32">
 		<a href="/store/{{ item.product.slug }}" class="">
 			<img class="object-cover w-full h-full md:group-hover:scale-[102%] transition-all duration-200" src="{{ item.product.get_thumbnail }}" alt="">
 		</a>
 	</div>
 
 	<div class="w-full p-2 md:px-6">
-		<div class="flex justify-between">
+		<div class="flex justify-between text-sm sm:text-base">
 			<a href="/store/{{ item.product.slug }}" class="font-semibold">{{ item.product.name }}</a>
 			<span class=" pt-1 text-gray-400">${{ item.total_price }}0</span>
 		</div>
 
-		<div class="quantity flex items-center w-full text-sm">
+		<div class="quantity flex items-center w-full text-xs ">
 			<a 
 				class="p-3 bg-gray-100 hover:bg-gray-200 transition-all duration-200 md:cursor-pointer"
 				hx-get="{% url 'update_cart' item.product.id 'decrement' %}"

@@ -4,9 +4,9 @@
 {% block content %}
 
 
-<div class="max-w-6xl mx-auto min-h-screen flex flex-wrap items-start py-6 px-6 xl:px-0">
-  <div class="filters w-full lg:w-1/4">
-    <h3 class="mb-3 text-xl uppercase">Search</h3>
+<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+  <div class="filters w-full lg:w-1/4 lg:sticky lg:top-14">
+    <h3 class="mb-3 text-xl uppercase">STORE</h3>
 
     <form method="get" action=".">
       <div class="flex pr-4">
@@ -57,7 +57,7 @@
       {% endfor %}
     </ul>
   </div>
-  <div class="products w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center h-full flex-wrap">
+  <div class="products w-full h-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center flex-wrap">
     {% for product in products %} 
       {% include 'product/partials/product_list_item.html' %} 
     {% endfor %}
