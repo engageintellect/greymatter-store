@@ -39,6 +39,8 @@ def edit_myaccount(request):
 
 	return render(request, 'core/edit_myaccount.html')
 
+def about(request):
+	return render(request, 'core/about.html')
 
 def layout(request):
 		products = Product.objects.all()[0:8]

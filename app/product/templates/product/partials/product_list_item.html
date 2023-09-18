@@ -1,4 +1,4 @@
-<div class="w-full p-6 shadow md:hover:shadow rounded transition-all duration-100">
+<div class="w-full h-full p-6 shadow md:hover:shadow rounded transition-all duration-100">
   <a href="{% url 'product' product.slug %}">
     <img
       src="{{ product.get_thumbnail }}"
@@ -7,7 +7,7 @@
     />
   </a>
 
-  <div class="pt-3 flex items-center justify-between">
+  <div class="pt-3 flex gap-2 items-start justify-between">
     <a href="{% url 'product' product.slug %}">{{ product.name }}</a>
     <a
       href="#"

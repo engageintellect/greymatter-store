@@ -27,7 +27,7 @@ class Product(models.Model):
 	thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
 	
 	class Meta:
-		ordering = ('-created_at',)
+		ordering = ('price',)
 
 	def __str__(self):
 		return self.name
