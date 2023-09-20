@@ -19,7 +19,7 @@ SECRET_KEY = 'django-insecure-o0br^cv6#og6gyby0e5@i19fb4#rxn2bp00qf8es#8@(+vim^i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.233.128.129', 'localhost']
+ALLOWED_HOSTS = ['www.shopgme.com', '172.233.128.129', 'localhost']
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'

@@ -20,6 +20,20 @@
 	<div class="summary w-full lg:w-1/3 rounded lg:sticky lg:top-14">
 		<h2 class="uppercase text-lg mb-5">Summary</h2>
 
+
+
+		<div class="mb-6 flex justify-between text-xl">
+			<span class="font-bold">Tax</span>
+			<span
+        hx-get="{% url 'hx_cart_tax' %}"
+        hx-trigger="update-menu-cart from:body"
+        hx-swap="innerHTML"
+      >
+			{% include 'cart/partials/cart_tax.html' %}
+			</span>
+		</div>
+
+
 		<div class="mb-6 flex justify-between text-xl">
 			<span class="font-bold">Total</span>
 			<span
@@ -27,10 +41,7 @@
         hx-trigger="update-menu-cart from:body"
         hx-swap="innerHTML"
       >
-
 			{% include 'cart/partials/cart_total.html' %}
-
-
 			</span>
 		</div>
 

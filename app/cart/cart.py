@@ -52,7 +52,13 @@ class Cart(object):
 		self.session.modified = True
 
 
+	def get_tax(self):
+		for p in self.cart.keys():
+			self.cart[str(p)]['product'] = Product.objects.get(pk=p)	
 
+		total = sum(int(item['product'].price * item['quantity']) / 100 for item in self.cart.values())
+		tax = total * 0.095
+		return f'{tax:.2f}'
 
 	def get_total_cost(self):
 		for p in self.cart.keys():
