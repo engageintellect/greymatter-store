@@ -19,6 +19,18 @@ This is a simple key-value store that uses a file as a backing store. It is writ
 
 
 
+## API KEYS:
+`/etc/greymatter-config.json`
+```json
+{
+        "SECRET_KEY": <YOUR KEY>,
+        "STRIPE_API_KEY_PUBLISHABLE": <YOUR KEY>,
+        "STRIPE_API_KEY_HIDDEN": <YOUR KEY>
+
+}
+~
+```
+
 
 
 

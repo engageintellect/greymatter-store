@@ -51,7 +51,6 @@ class Cart(object):
 		del self.session[settings.CART_SESSION_ID]
 		self.session.modified = True
 
-
 	def get_tax(self):
 		for p in self.cart.keys():
 			self.cart[str(p)]['product'] = Product.objects.get(pk=p)	
@@ -59,12 +58,19 @@ class Cart(object):
 		total = sum(int(item['product'].price * item['quantity']) / 100 for item in self.cart.values())
 		tax = total * 0.095
 		return f'{tax:.2f}'
+	
+	def get_subtotal(self):
+		for p in self.cart.keys():
+			self.cart[str(p)]['product'] = Product.objects.get(pk=p)
+		total = sum(int(item['product'].price * item['quantity']) / 100 for item in self.cart.values())
+		return f'{total:.2f}'
 
 	def get_total_cost(self):
 		for p in self.cart.keys():
-			self.cart[str(p)]['product'] = Product.objects.get(pk=p)	
-
+			self.cart[str(p)]['product'] = Product.objects.get(pk=p)
 		total = sum(int(item['product'].price * item['quantity']) / 100 for item in self.cart.values())
+		total = total + float(self.get_tax())
+
 		return f'{total:.2f}'
 	
 	def get_item(self, product_id):

@@ -35,8 +35,8 @@ def start_order(request):
 		payment_method_types=['card'],
 		line_items=items,
 		mode='payment',
-		success_url='http://172.233.128.129/cart/success/',
-		cancel_url='http://172.233.128.129/cart/'
+		success_url='http://www.shopgme.com/cart/success/',
+		cancel_url='http://www.shopgme.com/cart/'
 	)
 
 	payment_intent = session.payment_intent

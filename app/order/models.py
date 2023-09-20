@@ -33,7 +33,6 @@ class Order(models.Model):
 	class Meta:
 		ordering = ['-created_at',]
 
-
 	
 	def get_total_price(self):
 		if self.paid_amount:

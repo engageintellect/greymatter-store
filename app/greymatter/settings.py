@@ -2,8 +2,8 @@ import os
 import json
 from pathlib import Path
 
-#with open ('/etc/greymatter-store-config.json') as config_file:
-#    config = json.load(config_file)
+with open ('/etc/greymatter-config.json') as config_file:
+   config = json.load(config_file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,8 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o0br^cv6#og6gyby0e5@i19fb4#rxn2bp00qf8es#8@(+vim^i'
-#SECRET_KEY = config['SECRET_KEY']
+SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -27,10 +26,8 @@ LOGIN_URL = '/login/'
 
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
-# STRIPE_API_KEY_PUBLISHABLE = 'pk_live_51NrHiyKt8JHfvphAxjojBVdDvWAogS8NgPZHIsAyib7S9C2n2bkXgE44Roq88zcqBBtpFnMCSpxIEdJ8foV40gSa00gns0N9d9'
-# STRIPE_API_KEY_HIDDEN = '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'
 STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51NrHiyKt8JHfvphA6AW5lzeLBc4GKMtvD80imzLjmogNxX1Ygu9IsnBLJRyxFkZpxmW3aXDpjVEERorwuchnPblu00ncdlgnlu'
-STRIPE_API_KEY_HIDDEN = 'sk_test_51NrHiyKt8JHfvphA6u0um2wjj1M8M4YIlKWOWNFjLiEw7N93DvlHyJAUxvF8xqrD6iXRBV01JLGPYVuLAL9ocYOf00iX531o3G'
+STRIPE_API_KEY_HIDDEN = config['STRIPE_API_KEY_HIDDEN']
 
 
 
