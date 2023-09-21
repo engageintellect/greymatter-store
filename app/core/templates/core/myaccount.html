@@ -27,7 +27,7 @@
 
 	<h2 class="my-6 text-xl">My Orders:</h2>
 	{% for order in request.user.orders.all %}
-	<div class="w-full mb-6 flex flex-wrap border border-gray-200 shadow rounded p-6 group">
+	<div class="w-full mb-6 flex flex-wrap border border-gray-200 shadow rounded p-2 group">
 		<div class="flex justify-between w-full">
 			<div class="mb-6 flex justify-between">
 				<a href="#" class="">
@@ -60,7 +60,7 @@
 			{% for item in order.items.all %}
 			<div class="product mb-6 flex">
 				<a href="#" class="">
-					<img src="{{ item.product.get_thumbnail }}" alt="" class="hover:shadow-lg rounded object-cover h-32 w-32">
+					<img src="{{ item.product.get_thumbnail }}" alt="" class="hover:shadow-lg rounded object-cover h-24 w-24">
 				</a>
 
 				<div class="w-full p-6">

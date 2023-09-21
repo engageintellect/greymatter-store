@@ -1,6 +1,5 @@
 import json
 import stripe
-
 from django.conf import settings
 from django.http import JsonResponse
 
@@ -35,6 +34,7 @@ def start_order(request):
 		payment_method_types=['card'],
 		line_items=items,
 		mode='payment',
+  	# automatic_tax={"enabled": True},
 		success_url='http://www.shopgme.com/cart/success/',
 		cancel_url='http://www.shopgme.com/cart/'
 	)
