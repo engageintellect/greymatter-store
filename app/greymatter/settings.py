@@ -18,7 +18,7 @@ SECRET_KEY = config['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.shopgme.com', '172.233.128.129', 'localhost']
+ALLOWED_HOSTS = ['www.shopgme.com', 'shopgme.com', '172.233.128.129', 'localhost']
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
