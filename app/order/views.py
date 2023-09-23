@@ -15,6 +15,14 @@ def start_order(request):
 
 	for item in cart:
 		product = item['product']
+
+		###################################################################
+		# Add tax to the product price
+		###################################################################
+		product_price = int(product.price)
+		product_price += int(product_price * 0.0725)
+		###################################################################
+		
 		total_price += product.price * int(item['quantity'])
 
 		items.append({
@@ -23,7 +31,7 @@ def start_order(request):
 				'product_data': {
 					'name': product.name,
 				},
-				'unit_amount': product.price,
+				'unit_amount': product_price,
 			},
 			'quantity': int(item['quantity']),
 		})

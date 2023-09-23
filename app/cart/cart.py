@@ -54,9 +54,8 @@ class Cart(object):
 	def get_tax(self):
 		for p in self.cart.keys():
 			self.cart[str(p)]['product'] = Product.objects.get(pk=p)	
-
 		total = sum(int(item['product'].price * item['quantity']) / 100 for item in self.cart.values())
-		tax = total * 0.095
+		tax = total * 0.0725
 		return f'{tax:.2f}'
 	
 	def get_subtotal(self):

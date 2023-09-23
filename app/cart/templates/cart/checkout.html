@@ -97,10 +97,52 @@
   <div class="summary w-full flex flex-col lg:w-1/3 lg:sticky lg:top-14 rounded justify-start">
     <h2 class="uppercase text-lg mb-5">Summary</h2>
 
-    <div class="mb-6 flex justify-between text-xl">
-      <span class="font-bold">Total</span>
-      <span class="">${{ cart.get_total_cost }}</span>
-    </div>
+		<div class="mb-3 flex justify-between">
+			<span class="">Subtotal</span>
+			<span
+        hx-get="{% url 'hx_cart_subtotal' %}"
+        hx-trigger="update-menu-cart from:body"
+        hx-swap="innerHTML"
+      >
+			{% include 'cart/partials/cart_subtotal.html' %}
+			</span>
+		</div>
+
+		<div class="mb-3 flex justify-between">
+			<span class="">Tax</span>
+			<span
+        hx-get="{% url 'hx_cart_tax' %}"
+        hx-trigger="update-menu-cart from:body"
+        hx-swap="innerHTML"
+      >
+			{% include 'cart/partials/cart_tax.html' %}
+			</span>
+		</div>
+
+		<div class="mb-3 flex justify-between">
+			<span class="">Shipping</span>
+			<span
+        hx-get="{% url 'hx_cart_tax' %}"
+        hx-trigger="update-menu-cart from:body"
+        hx-swap="innerHTML"
+      >
+			Free
+			</span>
+		</div>
+
+		<div class="mb-6 flex justify-between text-lg">
+			<span class="font-bold">Total</span>
+			<span
+        hx-get="{% url 'hx_cart_total' %}"
+        hx-trigger="update-menu-cart from:body"
+        hx-swap="innerHTML"
+      >
+			{% include 'cart/partials/cart_total.html' %}
+			<!-- {% include 'cart/partials/cart_subtotal.html' %} -->
+			</span>
+		</div>
+
+
 
     <hr>
 
@@ -194,6 +236,7 @@
       'address': document.querySelector('input[name="address"]').value,
       'postal_code': document.querySelector('input[name="postal_code"]').value,
       'place': document.querySelector('input[name="place"]').value,
+
 
     }
 
