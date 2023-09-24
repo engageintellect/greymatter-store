@@ -30,14 +30,14 @@
     >
       <a
         href="#"
-        class="w-full flex justify-center px-8 py-4 rounded text-purple-500 border border-purple-600 font-semibold uppercase group"
+        class="w-full flex justify-center px-8 py-4 rounded md:active:scale-[98%] text-purple-500 border border-purple-600 font-semibold uppercase group"
         hx-get="{% url 'add_to_cart' product.id %}"
         hx-target="#menu-cart-button"
         hx-swap="outerHTML"
       >
         <div class="flex items-center justify-center gap-2">
           <div
-            class="md:group-hover:scale-[110%] md:group-active:animate-bounce transition-all duration-200"
+            class="md:group-hover:scale-[110%] transition-all duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@
       <a
         href="#"
         hx-redirect="true"
-        class="w-full flex justify-center px-8 py-4 rounded bg-purple-500 hover:bg-purple-600 font-semibold uppercase text-white group"
+        class="w-full flex justify-center px-8 py-4 rounded md:active:scale-[98%] bg-purple-500 hover:bg-purple-600 font-semibold uppercase text-white group"
         hx-get="{% url 'buy_now' product.id %}"
       >
         <div class="flex items-center justify-center gap-2">
@@ -109,7 +109,7 @@
           >
             <div class="flex gap-2 items-center justify-center">
               <div
-                class="md:group-hover:scale-[110%] transition-all duration-200 group-hover:text-teal-500"
+                class="md:group-hover:scale-[110%] transition-all duration-200 group-hover:text-purple-500"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
