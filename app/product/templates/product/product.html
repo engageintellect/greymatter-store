@@ -1,102 +1,150 @@
 {% extends "core/layout.html" %} 
-{% block title %}{{ product.name }}{% endblock %}
+{% block title %}{{ product.name }} 
+{% endblock %} 
 {% block content %}
 <div class="max-w-6xl mx-auto flex flex-wrap justify-center py-6 px-6 xl:px-0">
   <div class="images w-64 mb-6 md:mb-0 md:w-3/5">
-    <img 
-      src="{% if product.image %}{{ product.image.url }}{% else %}https://via.placeholder.com/240x240.jpg{% endif %}" 
-      class="rounded w-full" 
+    <img
+      src="{% if product.image %}{{ product.image.url }}{% else %}https://via.placeholder.com/240x240.jpg{% endif %}"
+      class="rounded w-full"
     />
   </div>
 
-  <div class="information w-full md:w-2/5 md:p-6">
+  <div class="information w-full md:w-2/5 md:p-6 md:sticky md:top-14">
     <h1 class="text-2xl font-semibold">{{ product.name }}</h1>
 
-    <p class="mt-1 text-gray-500"><span class="font-semibold">Price: </span>{{ product.get_display_price }}</p>
+    <p class="mt-1 text-gray-500">
+      <span class="font-semibold">Price: </span>{{ product.get_display_price }}
+    </p>
 
     {% if product.get_rating > 0 %}
-      <p class="mt-1 text-gray-500"><span class="font-semibold">Rating: </span>{{ product.get_rating }}</p>
-    {% endif %}
-
-    {% if product.description %}
+    <p class="mt-1 text-gray-500">
+      <span class="font-semibold">Rating: </span>{{ product.get_rating }}
+    </p>
+    {% endif %} {% if product.description %}
     <p class="mt-6 text-gray-700">{{ product.description }}</p>
     {% endif %}
 
-    <a
-      href="#"
-      class="w-full flex justify-center mt-6 px-8 py-4 rounded bg-purple-500 hover:bg-purple-600 font-semibold uppercase text-white group mb-10"
-      hx-get="{% url 'add_to_cart' product.id %}"
-      hx-target="#menu-cart-button"
-      hx-swap="outerHTML"
+    <div
+      class="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-2 mt-6 mb-10"
+    >
+      <a
+        href="#"
+        class="w-full flex justify-center px-8 py-4 rounded text-purple-500 border border-purple-600 font-semibold uppercase group"
+        hx-get="{% url 'add_to_cart' product.id %}"
+        hx-target="#menu-cart-button"
+        hx-swap="outerHTML"
       >
+        <div class="flex items-center justify-center gap-2">
+          <div
+            class="md:group-hover:scale-[110%] md:group-active:animate-bounce transition-all duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+          </div>
+          <div>Add to cart</div>
+        </div>
+      </a>
 
-      <div class="flex items-center justify-center gap-2">
-        <div class="md:group-hover:scale-[110%] md:group-active:animate-bounce transition-all duration-200">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
+      <a
+        href="#"
+        hx-redirect="true"
+        class="w-full flex justify-center px-8 py-4 rounded bg-purple-500 hover:bg-purple-600 font-semibold uppercase text-white group"
+        hx-get="{% url 'buy_now' product.id %}"
+      >
+        <div class="flex items-center justify-center gap-2">
+          <div>Buy Now: {{ product.get_display_price }}</div>
         </div>
-        <div>
-          Add to cart
-        </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 
-
-  <div class="w-full mt-6 max-w-lg mx-auto">
+  <div class="w-full">
     {% if request.user.is_authenticated %}
-    <h2 class="text-2xl mb-2 font-semibold">Write a review</h2>
-    <hr>
-    <form method="post" action="." class="my-5 flex flex-col gap-5">
-      {% csrf_token %}
 
-      <div class="">
-        <label>Rating</label>
-        <select name="rating" class="rounded px-2 py-1 bg-white border border-gray-700 md:hover:cursor-pointer">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </div>
+    <div class="w-full md:w-3/5 md:border md:border-gray-200 md:rounded md:shadow-lg md:p-6">
+      <h2 class="text-2xl mb-2 font-semibold">Write a review</h2>
+      <hr />
+      <form method="post" action="." class="my-5 flex flex-col gap-5">
+        {% csrf_token %}
 
-      <div class="flex flex-col">
-        <label>Comment</label>
-        <textarea name="content" class="w-full p-2 focus:outline-none focus:border-gray-700 border border-gray-200 rounded" rows="3"></textarea>
-      </div>
+        <div class="flex items-center gap-2">
+          <label>Rating</label>
+          <select
+            name="rating"
+            class="rounded px-2 py-1 bg-white border border-gray-700 md:hover:cursor-pointer"
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
 
-      <div class="mb-10">
-        <button class="py-2 px-4 rounded border border-gray-700 font-semibold uppercase text-sm my-2 group md:hover:shadow">
-          <div class="flex gap-2 items-center justify-center">
-            <div class="md:group-hover:scale-[110%] transition-all duration-200 group-hover:text-teal-500">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-              </svg>
+        <div class="flex flex-col">
+          <label>Comment</label>
+          <textarea
+            name="content"
+            class="w-full p-2 focus:outline-none focus:border-gray-700 border border-gray-200 rounded"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="mb-10">
+          <button
+            class="py-2 px-4 rounded border border-gray-700 font-semibold uppercase text-sm my-2 group md:hover:shadow"
+          >
+            <div class="flex gap-2 items-center justify-center">
+              <div
+                class="md:group-hover:scale-[110%] transition-all duration-200 group-hover:text-teal-500"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                  />
+                </svg>
+              </div>
+              <div>Submit Review</div>
             </div>
-            <div>
-              Submit Review
-            </div>
-          </div>
-        </button>
-      </div>
-    </form>
-    {% endif %}
-
-    {% if product.reviews.all %}
-    <h2 class="text-2xl mb-2 font-semibold">User Reviews</h2>
-    <hr>
-    {% endif %}
-
-    {% for review in product.reviews.all %}
+          </button>
+        </div>
+      </form>
+      {% endif %} {% if product.reviews.all %}
+      <h2 class="text-2xl mb-2 font-semibold">User Reviews</h2>
+      <hr />
+      {% endif %} {% for review in product.reviews.all %}
       <div class="flex flex-col my-5">
         <div class="flex flex-col">
-
           <div class="flex gap-2">
             <div class="flex gap-2 items-center">
               <div class="font-semibold">Rating:</div>
-              <div class="bg-purple-500 rounded-full py-1 px-2 text-white text-xs font-bold">{{ review.rating }} / 5</div>
+              <div
+                class="bg-purple-500 rounded-full py-1 px-2 text-white text-xs font-bold"
+              >
+                {{ review.rating }} / 5
+              </div>
             </div>
           </div>
 
@@ -114,19 +162,11 @@
             <div class="font-semibold">Comment:</div>
             <div>{{ review.content }}</div>
           </div>
-
         </div>
       </div>
-      <hr>
-    {% endfor %}
+      <hr />
+      {% endfor %}
+    </div>
   </div>
   {% endblock %}
 </div>
-
-
-
-
-
-
-
-

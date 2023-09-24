@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
 from .cart import Cart
 
@@ -11,6 +12,13 @@ def add_to_cart(request, product_id):
 	cart.add(product_id)
 
 	return render(request, 'cart/partials/menu_cart.html')
+
+def buy_now(request, product_id):
+    cart = Cart(request)
+    cart.add(product_id)
+    response = HttpResponse()
+    response["HX-Redirect"] = "/cart/"
+    return response
 
 
 def cart(request):
