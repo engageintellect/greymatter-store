@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/r3dux/greymatter/greymatter_env"
+VIRTUAL_ENV="/home/r3dux/Repositories/greymatter/greymatter_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
